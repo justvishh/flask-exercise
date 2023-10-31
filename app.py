@@ -21,8 +21,9 @@ def run_cmd(cmd):
         return e.stderr
 
 #Create a function 'parse_ping_putput' take params as 'output'
-def parse_ping_output(output):
-    lines = output.split('\n')
+def parse_ping_output(output:str):
+    lines = output.decode("utf-8")
+    lines = lines.split('\n')
     # Extracting the necessary information from ping output
     transmitted = received = min_latency = max_latency = 0
     for line in lines:
@@ -77,5 +78,3 @@ app.register_blueprint(mod_ip)
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
